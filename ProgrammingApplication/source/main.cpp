@@ -51,19 +51,56 @@ void  GameProcessing()
 	{
 	case finishedFadeOut:
 		fadeType = fadeIn;
+		phase = nextPhase;
 		break;
 	case finishedFadeIn:
 		fadeType = fadeNot;
 		break;
 	}
 
-	if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+	switch (phase)
 	{
-		fadeType = fadeOut;
+	case title:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			fadeType = fadeOut;
+			nextPhase = battle;
+			fadeSpeed = slow;
+		}
+		break;
+	case battle:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			fadeType = fadeOut;
+			nextPhase = result;
+			fadeSpeed = normal;
+		}
+		break;
+	case result:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			fadeType = fadeOut;
+			nextPhase = title;
+			fadeSpeed = quick;
+		}
+		break;
 	}
 }
 
 void DrawProcessing()
 {
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
+	switch (phase)
+	{
+	case title:
+		DrawString(0, 0, "title", GetColor(255, 0, 0));
+		break;
+	case battle:
+		DrawString(0, 0, "battle", GetColor(255, 0, 0));
+		break;
+	case result:
+		DrawString(0, 0, "result", GetColor(255, 0, 0));
+		break;
+	}
 	fade.DrawFade();
 }
