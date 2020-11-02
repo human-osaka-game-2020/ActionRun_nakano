@@ -1,4 +1,5 @@
-#include "common.h"
+ï»¿#include "common.h"
+#include "main.h"
 
 void  GameProcessing();
 void DrawProcessing();
@@ -12,43 +13,57 @@ int WINAPI WinMain(
 	ChangeWindowMode(true);
 	SetGraphMode(640, 480, 16);
 	SetWindowText("run");
+	SetBackgroundColor(255, 255, 255);
 	
-	if (DxLib_Init() == -1)		// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
+	if (DxLib_Init() == -1)		// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåˆæœŸåŒ–å‡¦ç†
 	{
-		return -1;			// ƒGƒ‰[‚ª‹N‚«‚½‚ç’¼‚¿‚ÉI—¹
+		return -1;			// ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰ç›´ã¡ã«çµ‚äº†
 	}
 
 	while (true)
 	{
-		// ƒƒbƒZ[ƒWƒ‹[ƒv‚É‘ã‚í‚éˆ—‚ğ‚·‚é
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—ã«ä»£ã‚ã‚‹å‡¦ç†ã‚’ã™ã‚‹
 		if (ProcessMessage() == -1 ||
 			CheckHitKey(KEY_INPUT_ESCAPE) == 1)
 		{
-			break;        // ƒGƒ‰[‚ª‹N‚«‚½‚çƒ‹[ƒv‚ğ”²‚¯‚é
+			break;        // ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ã‚‹
 		}
 		else
 		{
-			//ƒQ[ƒ€ˆ—
+			//ã‚²ãƒ¼ãƒ å‡¦ç†
 			GameProcessing();
 			
 			ClearDrawScreen();
 			clsDx();
-			//•`‰æˆ—
+			//æç”»å‡¦ç†
 			DrawProcessing();
 			ScreenFlip();
 		}
 	}
 
-	DxLib_End();	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠg—p‚ÌI—¹ˆ—
-	return 0;		// ƒ\ƒtƒg‚ÌI—¹ 
+	DxLib_End();	// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªä½¿ç”¨ã®çµ‚äº†å‡¦ç†
+	return 0;		// ã‚½ãƒ•ãƒˆã®çµ‚äº† 
 }
 
 void  GameProcessing()
 {
+	switch (fade.RunFade(fadeType, fadeSpeed))
+	{
+	case finishedFadeOut:
+		fadeType = fadeIn;
+		break;
+	case finishedFadeIn:
+		fadeType = fadeNot;
+		break;
+	}
 
+	if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+	{
+		fadeType = fadeOut;
+	}
 }
 
 void DrawProcessing()
 {
-
+	fade.DrawFade();
 }
