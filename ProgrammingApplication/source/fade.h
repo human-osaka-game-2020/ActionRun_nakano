@@ -1,28 +1,53 @@
-﻿#ifndef FADE_H
+﻿/**
+ * @file fade.h
+ * @brief フェード処理
+ */
+
+#ifndef FADE_H
 #define FADE_H
 
+ /**
+  * @enum FadeType
+  * フェードタイプ
+  */
 enum FadeType
 {
+	//! フェードを行っていない
 	fadeNot,
+	//! フェードイン
 	fadeIn,
+	//! フェードアウト
 	fadeOut,
 	fadetype_max
 };
-
-enum fadeStatus
+/**
+ * @enum FadeStatus
+ * RunFade関数の戻り値
+ */
+enum FadeStatus
 {
+	//! フェードを行っていない
 	donotFade,
+	//! フェード中
 	doingFade,
+	//! フェードイン終了
 	finishedFadeIn,
+	//! フェードアウト終了
 	finishedFadeOut,
 	fadestatus_max
 };
-
+/**
+ * @enum FadeSpeed
+ * フェードの速度
+ */
 enum FadeSpeed
 {
-	slow = 1,	//4.2s
-	normal = 3,	//1.4s
-	quick = 5,	//0.8s
+	//! 4.2s
+	slow = 1,
+	//! 1.4s
+	normal = 3,
+	//! 0.8s
+	quick = 5,
 	fadespeed_max
 };
 
