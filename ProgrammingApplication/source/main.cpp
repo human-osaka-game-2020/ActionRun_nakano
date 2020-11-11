@@ -49,39 +49,39 @@ void  GameProcessing()
 {
 	switch (fade.RunFade(fadeType, fadeSpeed))
 	{
-	case finishedFadeOut:
-		fadeType = fadeIn;
+	case kFinishedFadeOut:
+		fadeType = kFadeIn;
 		phase = nextPhase;
 		break;
-	case finishedFadeIn:
-		fadeType = fadeNot;
+	case kFinishedFadeIn:
+		fadeType = kFadeNot;
 		break;
 	}
 
 	switch (phase)
 	{
-	case title:
+	case kTitle:
 		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
-			fadeType = fadeOut;
-			nextPhase = battle;
-			fadeSpeed = slow;
+			fadeType = kFadeOut;
+			nextPhase = kBattle;
+			fadeSpeed = kSlow;
 		}
 		break;
-	case battle:
+	case kBattle:
 		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
-			fadeType = fadeOut;
-			nextPhase = result;
-			fadeSpeed = normal;
+			fadeType = kFadeOut;
+			nextPhase = kResult;
+			fadeSpeed = kNormal;
 		}
 		break;
-	case result:
+	case kResult:
 		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
-			fadeType = fadeOut;
-			nextPhase = title;
-			fadeSpeed = quick;
+			fadeType = kFadeOut;
+			nextPhase = kTitle;
+			fadeSpeed = kQuick;
 		}
 		break;
 	}
@@ -92,13 +92,13 @@ void DrawProcessing()
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
 	switch (phase)
 	{
-	case title:
+	case kTitle:
 		DrawString(0, 0, "title", GetColor(255, 0, 0));
 		break;
-	case battle:
+	case kBattle:
 		DrawString(0, 0, "battle", GetColor(255, 0, 0));
 		break;
-	case result:
+	case kResult:
 		DrawString(0, 0, "result", GetColor(255, 0, 0));
 		break;
 	}

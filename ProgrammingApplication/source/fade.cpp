@@ -4,10 +4,10 @@ void Fade::InitFade(FadeType fade_type)
 {
 	switch (fade_type)
 	{
-	case fadeOut:
+	case kFadeOut:
 		alpha = 0;
 		break;
-	case fadeIn:
+	case kFadeIn:
 		alpha = 255;
 		break;
 	}
@@ -18,10 +18,10 @@ bool Fade::FluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
 {
 	switch (fade_type)
 	{
-	case fadeOut:
+	case kFadeOut:
 		alpha += fade_speed;
 		break;
-	case fadeIn:
+	case kFadeIn:
 		alpha -= fade_speed;
 		break;
 	}
@@ -34,9 +34,9 @@ bool Fade::FluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
 
 int Fade::RunFade(FadeType fade_type, FadeSpeed fade_speed)
 {
-	if (fade_type == fadeNot)
+	if (fade_type == kFadeNot)
 	{
-		return donotFade;
+		return kDonotFade;
 	}
 
 	if (!initCheck_Fade)
@@ -47,19 +47,19 @@ int Fade::RunFade(FadeType fade_type, FadeSpeed fade_speed)
 	if (FluctuateAlpha(fade_type, fade_speed) == false)
 	{
 		initCheck_Fade = false;
-		if (fade_type == fadeIn)
+		if (fade_type == kFadeIn)
 		{
-			return finishedFadeIn;
+			return kFinishedFadeIn;
 		}
-		else if (fade_type == fadeOut)
+		else if (fade_type == kFadeOut)
 		{
-			return finishedFadeOut;
+			return kFinishedFadeOut;
 		}
 
 	}
 	else
 	{
-		return doingFade;
+		return kDoingFade;
 	}
 }
 

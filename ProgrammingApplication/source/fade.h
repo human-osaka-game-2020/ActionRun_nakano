@@ -12,12 +12,12 @@
 enum FadeType
 {
 	//! フェードを行っていない
-	fadeNot,
+	kFadeNot,
 	//! フェードイン
-	fadeIn,
+	kFadeIn,
 	//! フェードアウト
-	fadeOut,
-	fadetype_max
+	kFadeOut,
+	FADETYPE_MAX
 };
 
 /**
@@ -26,14 +26,14 @@ enum FadeType
 enum FadeStatus
 {
 	//! フェードを行っていない
-	donotFade,
+	kDonotFade,
 	//! フェード中
-	doingFade,
+	kDoingFade,
 	//! フェードイン終了
-	finishedFadeIn,
+	kFinishedFadeIn,
 	//! フェードアウト終了
-	finishedFadeOut,
-	fadestatus_max
+	kFinishedFadeOut,
+	FADESTATUS_MAX
 };
 
 /**
@@ -42,12 +42,12 @@ enum FadeStatus
 enum FadeSpeed
 {
 	//! 4.2s
-	slow = 1,
+	kSlow = 1,
 	//! 1.4s
-	normal = 3,
+	kNormal = 3,
 	//! 0.8s
-	quick = 5,
-	fadespeed_max
+	kQuick = 5,
+	FADESPEED_MAX
 };
 
 class Fade

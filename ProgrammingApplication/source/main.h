@@ -3,16 +3,16 @@
 
 enum Phase
 {
-	title,
-	battle,
-	result
+	kTitle,
+	kBattle,
+	kResult
 };
-Phase phase = title;
+Phase phase = kTitle;
 Phase nextPhase;
 
 Fade fade;
-FadeType fadeType = fadeNot;
-FadeSpeed fadeSpeed = normal;
+FadeType fadeType = kFadeNot;
+FadeSpeed fadeSpeed = kNormal;
 
 #endif // !MAIN_H
 
