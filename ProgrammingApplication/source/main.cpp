@@ -102,5 +102,5 @@ void DrawProcessing()
 		DrawString(0, 0, "result", GetColor(255, 0, 0));
 		break;
 	}
-	fade.DrawFade();
+	fade.Draw();
 }

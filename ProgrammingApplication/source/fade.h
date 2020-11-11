@@ -83,7 +83,7 @@ public:
 	/**
 	 * @brief フェード用矩形描画関数
 	 */
-	void DrawFade();
+	void Draw();
 
 private:
 	bool initCheck_Fade = false;

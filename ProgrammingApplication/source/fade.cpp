@@ -63,7 +63,7 @@ int Fade::RunFade(FadeType fade_type, FadeSpeed fade_speed)
 	}
 }
 
-void Fade::DrawFade()
+void Fade::Draw()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
 	DrawBox(0, 0, 640, 480, GetColor(0,0,0), TRUE);
