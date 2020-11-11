@@ -67,7 +67,7 @@ public:
 	 * @retval false フェード終了
 	 * @note RunFade関数内で実行
 	 */
-	bool FluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed);
+	bool MakeToFluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed);
 
 	/**
 	 * @brief フェード実行関数

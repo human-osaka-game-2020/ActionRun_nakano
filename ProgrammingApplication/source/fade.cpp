@@ -14,7 +14,7 @@ void Fade::InitFade(FadeType fade_type)
 	initCheck_Fade = true;
 }
 
-bool Fade::FluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
+bool Fade::MakeToFluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
 {
 	switch (fade_type)
 	{
@@ -44,7 +44,7 @@ int Fade::RunFade(FadeType fade_type, FadeSpeed fade_speed)
 		InitFade(fade_type);
 	}
 
-	if (FluctuateAlpha(fade_type, fade_speed) == false)
+	if (MakeToFluctuateAlpha(fade_type, fade_speed) == false)
 	{
 		initCheck_Fade = false;
 		if (fade_type == kFadeIn)
