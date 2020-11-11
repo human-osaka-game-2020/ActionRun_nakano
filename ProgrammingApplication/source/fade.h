@@ -7,8 +7,7 @@
 #define FADE_H
 
  /**
-  * @enum FadeType
-  * フェードタイプ
+  * @brief フェードタイプ
   */
 enum FadeType
 {
@@ -21,8 +20,7 @@ enum FadeType
 	fadetype_max
 };
 /**
- * @enum FadeStatus
- * RunFade関数の戻り値
+ * @brief フェードの状態
  */
 enum FadeStatus
 {
@@ -37,8 +35,7 @@ enum FadeStatus
 	fadestatus_max
 };
 /**
- * @enum FadeSpeed
- * フェードの速度
+ * @brief フェードの速度
  */
 enum FadeSpeed
 {
