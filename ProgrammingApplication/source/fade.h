@@ -19,6 +19,7 @@ enum FadeType
 	fadeOut,
 	fadetype_max
 };
+
 /**
  * @brief フェードの状態
  */
@@ -34,6 +35,7 @@ enum FadeStatus
 	finishedFadeOut,
 	fadestatus_max
 };
+
 /**
  * @brief フェードの速度
  */
