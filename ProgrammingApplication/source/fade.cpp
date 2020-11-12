@@ -11,6 +11,7 @@ void Fade::InitFade(FadeType fade_type)
 		alpha = 255;
 		break;
 	}
+
 	initCheck_Fade = true;
 }
 
@@ -25,10 +26,12 @@ bool Fade::MakeToFluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
 		alpha -= fade_speed;
 		break;
 	}
+
 	if (alpha == 255 || alpha == 0)
 	{
 		return false;
 	}
+
 	return true;
 }
 
