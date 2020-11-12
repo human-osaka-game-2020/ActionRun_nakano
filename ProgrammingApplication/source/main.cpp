@@ -67,11 +67,11 @@ void  GameProcessing()
 		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
 			fadeType = kFadeOut;
-			nextPhase = kBattle;
+			nextPhase = kAction;
 			fadeSpeed = kSlow;
 		}
 		break;
-	case kBattle:
+	case kAction:
 		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
 			fadeType = kFadeOut;
@@ -98,7 +98,7 @@ void DrawProcessing()
 	case kTitle:
 		DrawString(0, 0, "title", GetColor(255, 0, 0));
 		break;
-	case kBattle:
+	case kAction:
 		DrawString(0, 0, "battle", GetColor(255, 0, 0));
 		break;
 	case kResult:

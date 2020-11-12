@@ -1,10 +1,21 @@
+﻿/**
+ * @file main.h
+ * @brief mainで使う定義
+ */
+
 #ifndef MAIN_H
 #define MAIN_H
 
+/**
+* @brief シーンの状態
+*/
 enum Phase
 {
+	//! タイトルシーン
 	kTitle,
-	kBattle,
+	//! バトルシーン
+	kAction,
+	//! リザルトシーン
 	kResult
 };
 Phase phase = kTitle;
