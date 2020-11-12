@@ -17,7 +17,6 @@ enum FadeType
 	kFadeIn,
 	//! フェードアウト
 	kFadeOut,
-	FADETYPE_MAX
 };
 
 /**
@@ -33,7 +32,6 @@ enum FadeStatus
 	kFinishedFadeIn,
 	//! フェードアウト終了
 	kFinishedFadeOut,
-	FADESTATUS_MAX
 };
 
 /**
@@ -47,7 +45,6 @@ enum FadeSpeed
 	kNormal = 3,
 	//! 0.8s
 	kQuick = 5,
-	FADESPEED_MAX
 };
 
 class Fade
