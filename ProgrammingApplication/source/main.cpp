@@ -1,7 +1,7 @@
 ﻿#include "common.h"
 #include "main.h"
 
-void  GameProcessing();
+void GameProcessing();
 void DrawProcessing();
 
 int WINAPI WinMain(
