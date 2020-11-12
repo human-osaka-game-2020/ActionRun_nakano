@@ -60,7 +60,7 @@ public:
 	 * @brief フェードタイプに応じてアルファー値の増減を行う関数
 	 * @param fade_type フェードタイプ
 	 * @param fade_speed フェードの速度
-	 * @retval true フェード中
+	 * @retval true フェード中もしくはフェードを行っていない
 	 * @retval false フェード終了
 	 * @note RunFade関数内で実行
 	 */

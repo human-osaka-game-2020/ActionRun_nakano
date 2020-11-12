@@ -25,6 +25,9 @@ bool Fade::MakeToFluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
 	case kFadeIn:
 		alpha -= fade_speed;
 		break;
+	default:
+		return true;
+		break;
 	}
 
 	if (alpha == 255 || alpha == 0)
