@@ -12,6 +12,7 @@ Phase nextPhase;
 
 Fade fade;
 FadeType fadeType = kFadeNot;
+FadeStatus fadeStatus = kDonotFade;
 FadeSpeed fadeSpeed = kNormal;
 
 #endif // !MAIN_H

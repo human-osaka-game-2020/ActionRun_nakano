@@ -47,7 +47,8 @@ int WINAPI WinMain(
 
 void  GameProcessing()
 {
-	switch (fade.RunFade(fadeType, fadeSpeed))
+	fadeStatus = fade.RunFade(fadeType, fadeSpeed);
+	switch (fadeStatus)
 	{
 	case kFinishedFadeOut:
 		fadeType = kFadeIn;
@@ -55,6 +56,8 @@ void  GameProcessing()
 		break;
 	case kFinishedFadeIn:
 		fadeType = kFadeNot;
+		break;
+	default:
 		break;
 	}
 
