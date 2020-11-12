@@ -70,12 +70,9 @@ public:
 	 * @brief フェード実行関数
 	 * @param fade_type フェードタイプ
 	 * @param fade_speed フェードの速度
-	 * @retval donotFade フェードを行っていない
-	 * @retval doingFade フェード中
-	 * @retval finishedFadeIn フェードインの終了
-	 * @retval finishedFadeOut フェードアウトの終了
+	 * @return FadeStatus フェードの状態
 	 */
-	int RunFade(FadeType fade_type, FadeSpeed fade_speed);
+	FadeStatus RunFade(FadeType fade_type, FadeSpeed fade_speed);
 
 	/**
 	 * @brief フェード用矩形描画関数

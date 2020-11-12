@@ -35,7 +35,7 @@ bool Fade::MakeToFluctuateAlpha(FadeType fade_type, FadeSpeed fade_speed)
 	return true;
 }
 
-int Fade::RunFade(FadeType fade_type, FadeSpeed fade_speed)
+FadeStatus Fade::RunFade(FadeType fade_type, FadeSpeed fade_speed)
 {
 	if (fade_type == kFadeNot)
 	{
