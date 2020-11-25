@@ -1,6 +1,7 @@
-#include "common.h"
+ï»¿#include "common.h"
+#include "main.h"
 
-void  GameProcessing();
+void GameProcessing();
 void DrawProcessing();
 
 int WINAPI WinMain(
@@ -12,43 +13,97 @@ int WINAPI WinMain(
 	ChangeWindowMode(true);
 	SetGraphMode(640, 480, 16);
 	SetWindowText("run");
+	SetBackgroundColor(255, 255, 255);
 	
-	if (DxLib_Init() == -1)		// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
+	if (DxLib_Init() == -1)		// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåˆæœŸåŒ–å‡¦ç†
 	{
-		return -1;			// ƒGƒ‰[‚ª‹N‚«‚½‚ç’¼‚¿‚ÉI—¹
+		return -1;			// ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰ç›´ã¡ã«çµ‚äº†
 	}
 
 	while (true)
 	{
-		// ƒƒbƒZ[ƒWƒ‹[ƒv‚É‘ã‚í‚éˆ—‚ğ‚·‚é
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—ã«ä»£ã‚ã‚‹å‡¦ç†ã‚’ã™ã‚‹
 		if (ProcessMessage() == -1 ||
 			CheckHitKey(KEY_INPUT_ESCAPE) == 1)
 		{
-			break;        // ƒGƒ‰[‚ª‹N‚«‚½‚çƒ‹[ƒv‚ğ”²‚¯‚é
+			break;        // ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ã‚‹
 		}
 		else
 		{
-			//ƒQ[ƒ€ˆ—
+			//ã‚²ãƒ¼ãƒ å‡¦ç†
 			GameProcessing();
 			
 			ClearDrawScreen();
 			clsDx();
-			//•`‰æˆ—
+			//æç”»å‡¦ç†
 			DrawProcessing();
 			ScreenFlip();
 		}
 	}
 
-	DxLib_End();	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠg—p‚ÌI—¹ˆ—
-	return 0;		// ƒ\ƒtƒg‚ÌI—¹ 
+	DxLib_End();	// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªä½¿ç”¨ã®çµ‚äº†å‡¦ç†
+	return 0;		// ã‚½ãƒ•ãƒˆã®çµ‚äº† 
 }
 
 void  GameProcessing()
 {
+	fadeStatus = fade.RunFade(fadeType, fadeSpeed);
+	switch (fadeStatus)
+	{
+	case kFinishedFadeOut:
+		fadeType = kFadeIn;
+		phase = nextPhase;
+		break;
+	case kFinishedFadeIn:
+		fadeType = kFadeNot;
+		break;
+	default:
+		break;
+	}
 
+	switch (phase)
+	{
+	case kTitle:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			fadeType = kFadeOut;
+			nextPhase = kAction;
+			fadeSpeed = kSlow;
+		}
+		break;
+	case kAction:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			fadeType = kFadeOut;
+			nextPhase = kResult;
+			fadeSpeed = kNormal;
+		}
+		break;
+	case kResult:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			fadeType = kFadeOut;
+			nextPhase = kTitle;
+			fadeSpeed = kQuick;
+		}
+		break;
+	}
 }
 
 void DrawProcessing()
 {
-
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
+	switch (phase)
+	{
+	case kTitle:
+		DrawString(0, 0, "title", GetColor(255, 0, 0));
+		break;
+	case kAction:
+		DrawString(0, 0, "battle", GetColor(255, 0, 0));
+		break;
+	case kResult:
+		DrawString(0, 0, "result", GetColor(255, 0, 0));
+		break;
+	}
+	fade.Draw();
 }
